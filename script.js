@@ -1,4 +1,4 @@
-// Smooth scroll for anchor links
+// Smooth Scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function(e) {
     e.preventDefault();
@@ -9,7 +9,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 });
 
-// Animate elements on scroll
+// Animate Elements on Scroll
 const animateOnScroll = () => {
   const elements = document.querySelectorAll('h2, p');
   elements.forEach(el => {
@@ -23,3 +23,16 @@ const animateOnScroll = () => {
 
 window.addEventListener('load', animateOnScroll);
 window.addEventListener('scroll', animateOnScroll);
+
+// Custom Cursor
+const cursor = document.getElementById('custom-cursor');
+
+document.addEventListener('mousemove', e => {
+  cursor.style.top = `${e.clientY}px`;
+  cursor.style.left = `${e.clientX}px`;
+  cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+});
+
+document.addEventListener('mouseleave', () => {
+  cursor.style.transform = 'translate(-50%, -50%) scale(0)';
+});

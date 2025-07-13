@@ -13,7 +13,8 @@ body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
   color: #fff;
-  background-color: #f5f5f5;
+  background-color: #111;
+  overflow-x: hidden;
 }
 
 .container {
@@ -22,56 +23,86 @@ body {
   padding: 0 20px;
 }
 
+/* Custom Cursor */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+  z-index: 9999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.1s ease;
+}
+
 /* Hero Section */
 .hero {
-  position: relative;
-  height: 100vh;
-  background: url('background.jpg') no-repeat center center/cover;
+  min-height: 100vh;
+  background: url('https://picsum.photos/id/29/1920/1080 ') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
-  text-align: center;
+  position: relative;
+  animation: fadeIn 2s ease forwards;
 }
 
-.overlay {
+.hero::before {
+  content: '';
   position: absolute;
   top: 0; left: 0;
   width: 100%; height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.8));
   z-index: 1;
 }
 
-.content {
+.hero-content {
   position: relative;
   z-index: 2;
+  text-align: center;
   max-width: 800px;
+  padding: 0 20px;
 }
 
 .logo {
   width: 200px;
-  margin-bottom: 20px;
-  animation: fadeInUp 1s ease forwards;
+  margin-bottom: 30px;
+  animation: float 3s ease-in-out infinite;
 }
 
-.hero h1 {
-  font-size: 1.6rem;
-  margin-bottom: 20px;
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.animated-text {
+  opacity: 0;
+  transform: translateY(30px);
   animation: fadeInUp 1.5s ease forwards;
 }
 
 .btn {
   display: inline-block;
-  padding: 12px 24px;
-  background: linear-gradient(to right, #ff6f61, #ff8e53);
+  padding: 14px 30px;
+  background: linear-gradient(45deg, #ff6f61, #ff8e53);
   color: #fff;
   text-decoration: none;
   border-radius: 30px;
-  transition: transform 0.3s ease;
-  animation: fadeInUp 2s ease forwards;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  animation: pulse 2s infinite;
 }
 
-.btn:hover {
-  transform: scale(1.05);
+.glow-on-hover:hover {
+  box-shadow: 0 0 20px #ff6f61;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
 }
 
 /* Sections */
@@ -81,18 +112,15 @@ body {
 }
 
 .about {
-  background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
-  color: #333;
+  background: linear-gradient(to bottom right, #1a1a1a, #222);
 }
 
 .goal {
-  background: linear-gradient(to bottom right, #f9f9f9, #f0f0f0);
-  color: #333;
+  background: linear-gradient(to bottom right, #222, #2c2c2c);
 }
 
 .join-waitlist {
-  background: linear-gradient(to bottom right, #f0f0f0, #eaeaea);
-  color: #333;
+  background: linear-gradient(to bottom right, #2c2c2c, #333);
 }
 
 h2 {
@@ -100,7 +128,7 @@ h2 {
   margin-bottom: 20px;
   opacity: 0;
   transform: translateY(30px);
-  animation: fadeInUp 1s ease forwards;
+  animation: fadeInUp 1.5s ease forwards;
 }
 
 p {
@@ -108,7 +136,17 @@ p {
   margin: 0 auto 20px;
   opacity: 0;
   transform: translateY(20px);
-  animation: fadeInUp 1.5s ease forwards;
+  animation: fadeInUp 2s ease forwards;
+}
+
+/* Glass Card */
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Form */
@@ -121,7 +159,7 @@ form {
 }
 
 input[type="email"] {
-  padding: 12px;
+  padding: 14px;
   width: 280px;
   border-radius: 30px;
   border: none;
@@ -131,11 +169,11 @@ input[type="email"] {
 }
 
 input[type="email"]:focus {
-  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  box-shadow: 0 0 8px rgba(255, 111, 97, 0.4);
 }
 
 button {
-  padding: 12px 24px;
+  padding: 14px 30px;
   background: linear-gradient(to right, #333, #555);
   color: #fff;
   border: none;
@@ -146,23 +184,29 @@ button {
 
 button:hover {
   background: linear-gradient(to right, #555, #777);
+  box-shadow: 0 0 15px rgba(255, 111, 97, 0.3);
 }
 
 /* Footer */
 footer {
   padding: 40px 20px;
-  background-color: #f0f0f0;
+  background-color: #1a1a1a;
   text-align: center;
   font-size: 0.9rem;
-  color: #555;
+  color: #aaa;
 }
 
 footer a {
-  color: #333;
+  color: #ff6f61;
   text-decoration: underline;
 }
 
 /* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
