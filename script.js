@@ -73,25 +73,3 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-// Function to create particles
-function createParticles(count) {
-  const container = document.getElementById('particles-container');
-
-  for (let i = 0; i < count; i++) {
-    const particle = document.createElement('div');
-    particle.classList.add('particle');
-    container.appendChild(particle);
-  }
-}
-
-// Generate 50 particles
-createParticles(50);
-
-// Optional: Adjust particle density based on screen size
-window.addEventListener('resize', () => {
-  const container = document.getElementById('particles-container');
-  while (container.firstChild) {
-    container.removeChild(container.firstChild);
-  }
-  createParticles(window.innerWidth > 768 ? 50 : 30); // More particles on larger screens
-});
