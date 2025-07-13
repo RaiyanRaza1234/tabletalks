@@ -60,7 +60,7 @@ body {
 /* Hero Section */
 .hero {
   min-height: 100vh;
-  background: url('istockphoto-1073455468-612x612.jpg') no-repeat center center/cover;
+  background: url('istockphoto-1073455468-612x612.webp') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -309,4 +309,9 @@ button[type="submit"] {
 
 button:hover {
   box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
+}
+
+.hero {
+  background: url('istockphoto-1073455468-612x612.jpg') no-repeat center center/cover;
+  background-image: url('istockphoto-1073455468-612x612.webp'), url('istockphoto-1073455468-612x612.jpg');
 }
