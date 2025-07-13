@@ -6,17 +6,21 @@
   <title>Table Talks</title>
   <link rel="stylesheet" href="style.css" />
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
-  <script defer src="script.js"></script>
 </head>
-<body>
-<!-- Light/Dark Mode Toggle -->
-<label class="theme-toggle">
-  <input type="checkbox" id="theme-toggle-input" />
-  <span class="slider"></span>
-</label>
-  <div class="site-title">TABLE TALKS</div>
+<body class="light-theme">
+
+  <!-- Light/Dark Mode Toggle -->
+  <label class="theme-toggle">
+    <input type="checkbox" id="theme-toggle-input" />
+    <span class="slider"></span>
+    <span class="toggle-label">🌞 / 🌙</span>
+  </label>
+
   <!-- Custom Cursor -->
   <div class="cursor" id="custom-cursor"></div>
+
+  <!-- Site Title -->
+  <div class="site-title">TABLE TALKS</div>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -46,56 +50,56 @@
     </div>
   </section>
 
+  <!-- Join Waitlist Form -->
   <section id="waitlist" class="section join-waitlist">
-  <div class="container">
-    <h2>Join the Waitlist</h2>
-    <p>Be the first to experience Table Talks — a new kind of social event where meaningful conversations spark over drinks.</p>
+    <div class="container">
+      <h2>Join the Waitlist</h2>
+      <p>Be the first to experience Table Talks — a new kind of social event where meaningful conversations spark over drinks.</p>
+      <form id="tabletalks-form" action="https://formspree.io/f/xwpqevoo " method="POST">
+        <!-- Full Name -->
+        <label for="name">Full Name<span>*</span></label>
+        <input type="text" id="name" name="Full Name" required />
 
-    <form id="tabletalks-form" action="https://formspree.io/f/xwpqevoo " method="POST">
-      <!-- Full Name -->
-      <label for="name">Full Name<span>*</span></label>
-      <input type="text" id="name" name="Full Name" required />
+        <!-- Email -->
+        <label for="email">Email<span>*</span></label>
+        <input type="email" id="email" name="Email" required />
 
-      <!-- Email -->
-      <label for="email">Email<span>*</span></label>
-      <input type="email" id="email" name="Email" required />
+        <!-- Age -->
+        <label for="age">Age<span>*</span></label>
+        <select id="age" name="Age" required>
+          <option value="">-- Select --</option>
+          <option value="18 - 23">18 - 23</option>
+          <option value="24 - 29">24 - 29</option>
+          <option value="30 - 35">30 - 35</option>
+          <option value="36 - 40">36 - 40</option>
+          <option value="40+">40+</option>
+        </select>
 
-      <!-- Age -->
-      <label for="age">Age<span>*</span></label>
-      <select id="age" name="Age" required>
-        <option value="">-- Select --</option>
-        <option value="18 - 23">18 - 23</option>
-        <option value="24 - 29">24 - 29</option>
-        <option value="30 - 35">30 - 35</option>
-        <option value="36 - 40">36 - 40</option>
-        <option value="40+">40+</option>
-      </select>
+        <!-- Topics Interested In -->
+        <label>Topics you would be interested in listening to</label>
+        <div class="checkbox-group">
+          <label><input type="checkbox" name="Topics Interested In" value="Philosophy" /> Philosophy</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Music & Art" /> Music & Art</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Economics/Business" /> Economics/Business</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Sports" /> Sports</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Psychology" /> Psychology</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Politics" /> Politics</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Science" /> Science</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Media/Entertainment/Literature" /> Media/Entertainment/Literature</label>
+          <label><input type="checkbox" name="Topics Interested In" value="Other" /> Other (please specify below)</label>
+        </div>
 
-      <!-- Topics Interested In -->
-      <label>Topics you would be interested in listening to</label>
-      <div class="checkbox-group">
-        <label><input type="checkbox" name="Topics Interested In" value="Philosophy" /> Philosophy</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Music & Art" /> Music & Art</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Economics/Business" /> Economics/Business</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Sports" /> Sports</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Psychology" /> Psychology</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Politics" /> Politics</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Science" /> Science</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Media/Entertainment/Literature" /> Media/Entertainment/Literature</label>
-        <label><input type="checkbox" name="Topics Interested In" value="Other" /> Other (please specify below)</label>
-      </div>
+        <!-- Additional Thoughts -->
+        <label>Anything that you'd personally love to be included at the event? Any general thoughts!</label>
+        <textarea name="Additional Thoughts" rows="5" placeholder="Tell us more..."></textarea>
 
-      <!-- Anything else -->
-      <label>Anything that you'd personally love to be included at the event? Any general thoughts!</label>
-      <textarea name="Additional Thoughts" rows="5" placeholder="Tell us more..."></textarea>
+        <!-- Submit Button -->
+        <button type="submit" id="my-form-button">Submit</button>
 
-      <!-- Submit Button -->
-      <button type="submit" id="my-form-button">Submit</button>
-
-      <!-- Status Message -->
-      <p id="my-form-status"></p>
-    </form>
-   </div>
+        <!-- Status Message -->
+        <p id="my-form-status"></p>
+      </form>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -105,5 +109,7 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
+  <script src="script.js"></script>
 </body>
 </html>
