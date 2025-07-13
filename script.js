@@ -1,32 +1,25 @@
-// Smooth Scrolling
+// Smooth scroll for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function (e) {
+  anchor.addEventListener('click', function(e) {
     e.preventDefault();
-
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth'
-    });
-  });
-});
-
-// Scroll Indicator
-const scrollIndicator = document.getElementById('scroll-indicator');
-const sections = document.querySelectorAll('.section');
-
-window.addEventListener('scroll', () => {
-  const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-  const scrolled = window.scrollY;
-  const scrollPercentage = (scrolled / scrollHeight) * 100;
-
-  scrollIndicator.style.height = `${scrollPercentage}%`;
-
-  // Highlight active section
-  sections.forEach(section => {
-    const rect = section.getBoundingClientRect();
-    if (rect.top <= window.innerHeight && rect.bottom >= 0) {
-      section.classList.add('active');
-    } else {
-      section.classList.remove('active');
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
     }
   });
 });
+
+// Animate elements on scroll
+const animateOnScroll = () => {
+  const elements = document.querySelectorAll('h2, p');
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 50) {
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+    }
+  });
+};
+
+window.addEventListener('load', animateOnScroll);
+window.addEventListener('scroll', animateOnScroll);

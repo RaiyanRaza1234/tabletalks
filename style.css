@@ -5,13 +5,15 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: 'Segoe UI', sans-serif;
   line-height: 1.6;
+  color: #fff;
   background-color: #f5f5f5;
-  color: #333;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
 }
 
 .container {
@@ -20,93 +22,139 @@ body {
   padding: 0 20px;
 }
 
-/* Sections */
+/* Hero Section */
 .hero {
-  background: linear-gradient(135deg, #eaeaea, #fafafa);
-  padding: 80px 20px;
-  text-align: center;
   position: relative;
+  height: 100vh;
+  background: url('background.jpg') no-repeat center center/cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
-.hero .logo {
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.logo {
   width: 200px;
-  height: auto;
   margin-bottom: 20px;
+  animation: fadeInUp 1s ease forwards;
 }
 
 .hero h1 {
-  font-size: 1.8rem;
-  max-width: 800px;
-  margin: 20px auto;
-  color: #333;
+  font-size: 1.6rem;
+  margin-bottom: 20px;
+  animation: fadeInUp 1.5s ease forwards;
 }
 
-.cta-button {
+.btn {
   display: inline-block;
-  padding: 10px 20px;
-  background-color: #333;
+  padding: 12px 24px;
+  background: linear-gradient(to right, #ff6f61, #ff8e53);
   color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: transform 0.3s ease;
+  animation: fadeInUp 2s ease forwards;
 }
 
-.cta-button:hover {
-  background-color: #555;
+.btn:hover {
+  transform: scale(1.05);
 }
 
+/* Sections */
 .section {
-  padding: 60px 20px;
-  background-color: #f5f5f5;
+  padding: 80px 20px;
   text-align: center;
 }
 
 .about {
-  background: linear-gradient(135deg, #f5f5f5, #eaeaea);
+  background: linear-gradient(to bottom right, #ffffff, #f9f9f9);
+  color: #333;
 }
 
 .goal {
-  background: linear-gradient(135deg, #eaeaea, #f5f5f5);
+  background: linear-gradient(to bottom right, #f9f9f9, #f0f0f0);
+  color: #333;
 }
 
 .join-waitlist {
-  background: linear-gradient(135deg, #f5f5f5, #eaeaea);
+  background: linear-gradient(to bottom right, #f0f0f0, #eaeaea);
+  color: #333;
 }
 
+h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s ease forwards;
+}
+
+p {
+  max-width: 700px;
+  margin: 0 auto 20px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s ease forwards;
+}
+
+/* Form */
 form {
   display: flex;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
+  margin-top: 30px;
 }
 
 input[type="email"] {
-  padding: 10px;
-  width: 250px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+  padding: 12px;
+  width: 280px;
+  border-radius: 30px;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input[type="email"]:focus {
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
 }
 
 button {
-  padding: 10px 20px;
-  background-color: #333;
+  padding: 12px 24px;
+  background: linear-gradient(to right, #333, #555);
   color: #fff;
   border: none;
-  border-radius: 4px;
+  border-radius: 30px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 button:hover {
-  background-color: #555;
+  background: linear-gradient(to right, #555, #777);
 }
 
+/* Footer */
 footer {
-  padding: 30px 20px;
+  padding: 40px 20px;
   background-color: #f0f0f0;
   text-align: center;
   font-size: 0.9rem;
+  color: #555;
 }
 
 footer a {
@@ -114,28 +162,14 @@ footer a {
   text-decoration: underline;
 }
 
-/* Scroll Indicator */
-#scroll-indicator {
-  position: fixed;
-  top: 50%;
-  right: 20px;
-  transform: translateY(-50%);
-  width: 10px;
-  height: 100px;
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  z-index: 999;
-  pointer-events: none;
-}
-
-#scroll-indicator::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 0%;
-  background: #333;
-  border-radius: inherit;
-  transition: height 0.3s ease;
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
