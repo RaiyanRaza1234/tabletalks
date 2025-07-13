@@ -310,3 +310,72 @@ button[type="submit"] {
 button:hover {
   box-shadow: 0 0 15px rgba(255, 111, 97, 0.5);
 }
+
+/* Base Light Theme Colors */
+:root {
+  --bg-color: #fdf8f0; /* light beige/cream */
+  --text-color: #222;
+  --card-bg: rgba(255, 255, 255, 0.8);
+  --accent-color: #ff6f61;
+}
+
+/* Dark Theme Colors */
+.dark-theme {
+  --bg-color: #121212;
+  --text-color: #f5f5f5;
+  --card-bg: rgba(30, 30, 30, 0.8);
+  --accent-color: #ff8e53;
+}
+
+/* Apply theme variables globally */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Glassmorphism cards and sections */
+.glass-card,
+.section,
+form,
+footer {
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+  background: var(--bg-color);
+  border: 1px solid #ccc;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.theme-toggle .slider {
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 16px;
+  height: 16px;
+  background: var(--text-color);
+  border-radius: 50%;
+  transition: left 0.3s, background 0.3s;
+}
+
+.theme-toggle input {
+  display: none;
+}
+
+.dark-theme .theme-toggle .slider {
+  left: 30px;
+  background: #fff;
+}
