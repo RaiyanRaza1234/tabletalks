@@ -60,7 +60,7 @@ body {
 /* Hero Section */
 .hero {
   min-height: 100vh;
-  background: url('istockphoto-1073455468-612x612.webp') no-repeat center center/cover;
+  background: url('barbackground.webp') no-repeat center center/cover;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -313,5 +313,5 @@ button:hover {
 
 .hero {
   background: url('istockphoto-1073455468-612x612.jpg') no-repeat center center/cover;
-  background-image: url('istockphoto-1073455468-612x612.webp'), url('istockphoto-1073455468-612x612.jpg');
+  background-image: url('barbackground.webp'), url('istockphoto-1073455468-612x612.jpg');
 }
