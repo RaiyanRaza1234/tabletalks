@@ -16,9 +16,9 @@ html {
   transform: translateX(-50%);
   z-index: 100;
   font-family: 'Montserrat', sans-serif;
-  font-size: 28px;
+  font-size: 40px;
   font-weight: 600;
-  color: #FFA726; /* Light Orange – feel free to tweak this */
+  color: #ffe6de;
   letter-spacing: 2px;
   text-transform: uppercase;
   background: rgba(255, 255, 255, 0.1);
