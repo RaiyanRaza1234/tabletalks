@@ -121,3 +121,54 @@ async function loadExperts() {
 
 // Run on load
 document.addEventListener("DOMContentLoaded", loadExperts);
+
+const expertUrls = [
+  " https://www.unsw.edu.au/staff/lise-lafferty ",
+  // Add more URLs as needed
+];
+
+async function fetchExpertData(url) {
+  try {
+    const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent(url)}`);
+    const data = await response.json();
+    const html = data.contents;
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(html, 'text/html');
+
+    const name = doc.querySelector("h1")?.textContent.trim() || "Name not found";
+    const title = doc.querySelector(".field--name-field-job-title")?.textContent.trim() || "Title not available";
+    const summary = doc.querySelector(".field--name-field-bio")?.textContent.trim().substring(0, 150) + "..." || "No summary available.";
+    const imageUrl = doc.querySelector(".field--name-field-profile-image img")?.src || "";
+
+    return {
+      name,
+      title,
+      summary,
+      imageUrl: imageUrl.startsWith("//") ? "https:" + imageUrl : imageUrl
+    };
+  } catch (error) {
+    console.error("Error fetching expert", error);
+    return null;
+  }
+}
+
+async function loadAllExperts() {
+  const container = document.getElementById("expert-cards");
+  for (const url of expertUrls) {
+    const expert = await fetchExpertData(url);
+    if (expert) {
+      const card = document.createElement("div");
+      card.className = "expert-card";
+      card.innerHTML = `
+        ${expert.imageUrl ? `<img src="${expert.imageUrl}" alt="${expert.name}" class="expert-image">` : ""}
+        <h3>${expert.name}</h3>
+        <p><strong>${expert.title}</strong></p>
+        <p>${expert.summary}</p>
+      `;
+      container.appendChild(card);
+    }
+  }
+}
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", loadAllExperts);
