@@ -44,7 +44,7 @@ html {
 
 .site-title {
   position: absolute;
-  top: 20px;
+  top: 70px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 100;
